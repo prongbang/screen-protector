@@ -4,7 +4,7 @@
 
 Safe Data Leakage via Application Background Screenshot and Prevent Screenshot for Android
 
-![screen-protector.gif](screen-protector.gif =x250)
+![screen-protector.gif](screen-protector.gif){width=200px}
 
 ## Setup
 
