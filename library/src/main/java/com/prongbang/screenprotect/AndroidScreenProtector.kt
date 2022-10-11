@@ -39,24 +39,26 @@ class AndroidScreenProtector(
 ) : ScreenProtector {
 
     override fun process(enabled: Boolean) {
-        if (enabled) {
-            protect()
-        } else {
-            unprotect()
-        }
+        try {
+            if (enabled) {
+                if (isMoreThanEqualsAndroid12UseCase.execute()) {
+                    screenViewUtility.invisible()
+                }
+                protect()
+            } else {
+                if (isMoreThanEqualsAndroid12UseCase.execute()) {
+                    screenViewUtility.visible()
+                }
+                unprotect()
+            }
+        } catch (_: Exception) { }
     }
 
     override fun protect() {
-        if (isMoreThanEqualsAndroid12UseCase.execute()) {
-            screenViewUtility.invisible()
-        }
         flagUtility.flag()
     }
 
     override fun unprotect() {
-        if (isMoreThanEqualsAndroid12UseCase.execute()) {
-            screenViewUtility.visible()
-        }
         flagUtility.clear()
     }
 
